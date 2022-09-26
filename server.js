@@ -17,6 +17,11 @@ var HTTP_PORT = process.env.PORT || 8080;
 var express = require("express");
 var app = express();
 
+var path = require("path");
+
+//•	Your first step is to "require" this module at the top of your server.js file so that we can use it to interact with the data from server.js
+var blogService = require("./blog-service.js");
+
 app.use(express.static(path.join(__dirname + "/public")));
 
 //o	The server must output: "Express http server listening on port" - to the console, where port is the port the server is currently listening on (ie: 8080)
@@ -36,6 +41,42 @@ app.get("/about", (req, res) => {
 
 //o	NOTE: for your server to correctly return the "/css/main.css" file, the "static" middleware must be used:  in your server.js file, add the line: app.use(express.static('public')); before your "routes" (see week 4 "Serving static files")
 // on line : 20
+
+//•	Inside your server.js add routes to respond to the following "get" requests for the application.
+//  Once you have written the routes, test that they work properly by returning a confirmation string using res.send() and testing the server using localhost:8080.
+//-> OKK
+
+/*
+
+/blog
+•	This route will return a JSON formatted string containing all of the posts within the posts.json file whose published property is set to true (ie: "published" posts).
+
+/posts
+•	This route will return a JSON formatted string containing all the posts within the posts.json files
+
+/categories
+•	This route will return a JSON formatted string containing all of the categories within the categories.json file
+
+[ no matching route ]
+•	If the user enters a route that is not matched with anything in your app (ie: http://localhost:8080/app) then you must return the custom message "Page Not Found" with an HTTP status code of 404.  
+
+*/
+
+app.get("/blog", (req, res) => {
+  res.send("Working");
+});
+
+app.get("/posts", (req, res) => {
+  res.send("Working");
+});
+
+app.get("/categories", (req, res) => {
+  res.send("Working");
+});
+
+app.get("*", (req, res) => {
+  res.status(404).send("404");
+});
 
 //Well, this is must!!
 app.listen(HTTP_PORT);
