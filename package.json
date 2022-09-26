@@ -1,0 +1,23 @@
+{
+  "name": "web322-app",
+  "version": "1.0.0",
+  "description": "This is my Assignment 2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NishitShah18/web322-app.git"
+  },
+  "author": "Nishit Gaurang Shah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NishitShah18/web322-app/issues"
+  },
+  "homepage": "https://github.com/NishitShah18/web322-app#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
