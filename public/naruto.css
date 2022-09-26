@@ -1,8 +1,9 @@
 body {
     /* Typography Declarations */
-    color: #222222;
     font-size: 1em;
     font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    color: rgb(164, 160, 159);
+    background-color: #535353;
 }
 
 h1,
@@ -97,6 +98,7 @@ a:active {
     /* Typography Declarations */
     font-family: "Gentium Book Basic", Georgia, serif;
     font-size: 2em;
+    color: rgb(164, 160, 159);
 }
 
 .masthead-heading {
@@ -153,7 +155,7 @@ section>h1 {
     background-size: cover;
     background-repeat: no-repeat;
     border-top: solid 1em #2ecc71;
-    height: 250px;
+    height: 270px;
 }
 
 .masthead-intro {
