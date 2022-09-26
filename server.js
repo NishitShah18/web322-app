@@ -67,15 +67,15 @@ app.get("/blog", (req, res) => {
 });
 
 app.get("/posts", (req, res) => {
-  res.send("Working");
+  res.sendFile(__dirname + "/data/posts.json");
 });
 
 app.get("/categories", (req, res) => {
-  res.send("Working");
+  res.sendFile(__dirname + "/data/categories.json");
 });
 
 app.get("*", (req, res) => {
-  res.status(404).send("404");
+  res.status(404).sendFile(__dirname + "/views/404/error.html");
 });
 
 //Well, this is must!!
