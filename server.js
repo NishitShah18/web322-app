@@ -17,7 +17,7 @@ var HTTP_PORT = process.env.PORT || 8080;
 var express = require("express");
 var app = express();
 
-var path = require("path");
+const path = require("path");
 
 //•	Your first step is to "require" this module at the top of your server.js file so that we can use it to interact with the data from server.js
 var blogService = require("./blog-service.js");
@@ -74,9 +74,21 @@ app.get("/categories", (req, res) => {
   res.sendFile(__dirname + "/data/categories.json");
 });
 
+app.get("/allposts", (req, res) => {
+  blogService.getAllPosts().then((blogService) => {
+    res.json(blogService);
+  });
+});
+
 app.get("*", (req, res) => {
   res.status(404).sendFile(__dirname + "/views/404/error.html");
 });
-
 //Well, this is must!!
-app.listen(HTTP_PORT, onHttpStart);
+blogService
+  .initialize()
+  .then(function () {
+    app.listen(HTTP_PORT, onHttpStart);
+  })
+  .catch(function (err) {
+    console.log("Unable to open the file: " + err);
+  });

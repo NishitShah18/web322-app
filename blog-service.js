@@ -11,7 +11,7 @@
  ********************************************************************************/
 
 const { rejects } = require("assert");
-const fs = require("fs"); // required at the top of my module
+const file = require("fs"); // required at the top of my module
 const { resolve } = require("path");
 
 //Module Data
@@ -21,29 +21,28 @@ var categories = [];
 //initialize()
 //•	This function will read the contents of the "./data/posts.json" and "./data/categories.json" file
 
-module.exports.initialize = function () {
-  return new Promise((res, rej) => {
-    fs.readFile("./data/posts.json"),
-      (err, data) => {
-        if (err) {
-          rej("unable to read file");
-        } else {
-          posts = JSON.parse(data);
-        }
-      };
-    fs.readFile("./data/categories.json"),
-      (err, data) => {
-        if (err) {
-          rej("unable to read file");
-        } else {
-          categories = JSON.parse(data);
-        }
-      };
-    res();
+initialize = function () {
+  return new Promise((resolve, reject) => {
+    file.readFile("./data/posts.json", "utf8", (err, data) => {
+      if (err) {
+        reject("unable to read file");
+      } else {
+        posts = JSON.parse(data);
+      }
+    });
+
+    file.readFile("./data/categories.json", "utf8", (err, data) => {
+      if (err) {
+        reject("unable to read file");
+      } else {
+        categories = JSON.parse(data);
+      }
+    });
+    resolve();
   });
 };
 
-module.exports.getAllPosts = function () {
+getAllPosts = function () {
   return new Promise((res, rej) => {
     if (posts.length === 0) {
       rej("no results returned");
@@ -53,7 +52,7 @@ module.exports.getAllPosts = function () {
   });
 };
 
-module.exports.getPublishedPosts = function () {
+getPublishedPosts = function () {
   return new Promise((res, rej) => {
     var filteredPosts = [];
     for (let i = 0; i < movies.length; i++) {
@@ -70,7 +69,7 @@ module.exports.getPublishedPosts = function () {
   });
 };
 
-module.exports.getCategories = function () {
+getCategories = function () {
   return new Promise((res, rej) => {
     if (categories.length === 0) {
       rej("no results returned");
@@ -78,4 +77,11 @@ module.exports.getCategories = function () {
       res(categories);
     }
   });
+};
+
+module.exports = {
+  initialize,
+  getAllPosts,
+  getPublishedPosts,
+  getCategories,
 };
