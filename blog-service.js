@@ -55,7 +55,7 @@ getAllPosts = function () {
 getPublishedPosts = function () {
   return new Promise((res, rej) => {
     var filteredPosts = [];
-    for (let i = 0; i < movies.length; i++) {
+    for (let i = 0; i < posts.length; i++) {
       if (posts[i].published === true) {
         filteredPosts.push(posts[i]);
       }
