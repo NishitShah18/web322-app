@@ -9,3 +9,9 @@
  *  Online (Cyclic) URL:
  *
  ********************************************************************************/
+
+const fs = require("fs"); // required at the top of my module
+
+//Module Data
+var posts = [];
+var categories = [];

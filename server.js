@@ -79,4 +79,4 @@ app.get("*", (req, res) => {
 });
 
 //Well, this is must!!
-app.listen(HTTP_PORT);
+app.listen(HTTP_PORT, onHttpStart);
